@@ -1,0 +1,37 @@
+{
+  "name": "test-stencil",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/test-stencil/test-stencil.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs --serve --watch",
+    "buildssr": "stencil build --docs --serve --watch --prerender",
+    "start": "stencil build --dev --watch --serve",
+    "startssr": "stencil build --dev --watch --serve --prerender",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.3.3",
+    "@stencil/less": "^1.0.0",
+    "@stencil/sass": "^1.1.1",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/redux": "^0.1.1",
+    "redux": "^4.0.4"
+  }
+}

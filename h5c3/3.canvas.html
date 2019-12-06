@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas width="400" height="200" id="canvas"></canvas>
+  <script>
+    const canvas = document.querySelector('#canvas')
+    const ctx = canvas.getContext('2d')
+    let shadow
+    shadow = function shadow(blur) {
+      this.shadowBlur = blur
+      return (color, x = 10, y = 10 ) => {
+        this.shadowColor = color
+        this.shadowOffsetX = x
+        this.shadowOffsetY = y
+        this.font = '40px 黑体'
+      }
+    }.bind(ctx)
+    ctx.beginPath()
+    ctx.fillStyle = '#f00'
+    ctx.fillRect(0, 0, 50, 50)
+    ctx.closePath()
+    canvas.onmousemove = function (e) {
+      const b = shadow(0)
+      b('#ccc', 0 ,0)
+      if (e.y <= 50 && e.x <= 50) {
+        ctx.fillStyle = '#000'
+        ctx.fillRect(0, 0, 50, 50)
+      } else {
+        ctx.fillStyle = '#f00'
+        ctx.fillRect(0, 0, 50, 50)
+      }
+    }
+    const b2 = shadow(2.2)    
+    ctx.fillStyle = '#aaa'
+    b2('#ccc', 10, 10)
+    ctx.fillText('TEXT', 100,100)
+    ctx.fillStyle = '#c00'
+    b2('#a00', 5, 5)
+    ctx.fillText('TEXT', 100,140)
+
+    ctx.beginPath()
+    ctx.moveTo(60, 50)
+    ctx.lineTo(60, 0)
+    ctx.lineTo(110, 0)
+    ctx.lineTo(110, 50)
+    ctx.arc(85, 50, 25, 0, Math.PI)
+    ctx.closePath()
+    ctx.clip()
+    ctx.fillStyle = '#ccc'
+    ctx.fillRect(60, 0, 40, 50)
+    ctx.stroke()
+    ctx.fillText('TEXT1', 85, 60)
+  </script>
+</body>
+</html>

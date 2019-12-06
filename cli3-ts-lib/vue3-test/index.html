@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script type="module" src="./node_modules/vue-next/packages/vue/dist/vue.esm-browser.js"></script> -->
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import * as Vue from './node_modules/vue-next/packages/vue/dist/vue.esm-browser.js'
+    console.log(Vue)
+    const t = {
+      setup() {
+        const msg = Vue.ref("hello");
+        console.log(msg);
+        Vue.onMounted(() => {
+          console.log(`mounted`);
+        });
+        const toggleMsg = () => {
+          msg.value = msg.value === 'hello' ? 'world' : 'hello'
+        }
+        const computedMsg = Vue.computed(() => msg.value + (msg.value === 'hello' ? 'world' : 'hello'))
+        return {
+          msg,
+          toggleMsg,
+          computedMsg
+        };
+      },
+      template: `<div>
+        <span @click="toggleMsg">{{ msg }}</span>
+        <br>
+        <span>{{ computedMsg }}</span>
+      </div>`
+    };
+    const _t = Vue.createApp(t, document.querySelector("#app"));
+    _t.mount(t, document.querySelector("#app"));
+  </script>
+</body>
+</html>

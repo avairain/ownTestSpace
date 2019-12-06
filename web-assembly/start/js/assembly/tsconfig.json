@@ -1,0 +1,6 @@
+{
+  "extends": "../../../tools/assemblyscript/std/assembly.json",
+  "include": [
+    "./**/*.ts"
+  ]
+}

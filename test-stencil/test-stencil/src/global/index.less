@@ -1,0 +1,20 @@
+:root {
+  --app-primary-color: #488aff;
+}
+
+app-component {
+  color: red;
+  border: 1px solid #000;
+  display: block;
+}
+
+app-component::part(my-div) {
+  color: #ccc;
+  border: 5px solid #000;
+  display: block;
+}
+
+app-component::part(test-component) {
+  border: 5px solid #ff0;
+  display: block;
+}
